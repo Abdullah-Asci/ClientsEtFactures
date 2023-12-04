@@ -100,7 +100,8 @@ public class Client
 	 * Supprime le client.
 	 */
 	
-	public void delete()
+	public void delete(client)
 	{
+		return null;
 	}
 }
