@@ -12,6 +12,8 @@ public class Client
 	
 	public Client(String nom)
 	{
+		this.nom = nom;
+		this.factures = new ArrayList<>();
 	}
 
 	/**
@@ -21,7 +23,7 @@ public class Client
 	
 	public String getNom()
 	{
-		return null;
+		return This.Nom;
 	}
 	
 	/**
@@ -31,6 +33,7 @@ public class Client
 	
 	public void setNom(String nom)
 	{
+		This.nom = nom;
 	}
 	
 	/**
@@ -41,7 +44,9 @@ public class Client
 	
 	public Facture createFacture(int montant)
 	{
-		return null;
+		Facture nouvelleFacture = new Facture(montant);
+		this.factures.add(nouvelleFacture);
+		return nouvelleFacture;
 	}
 	
 	/**
@@ -51,7 +56,7 @@ public class Client
 
 	public List<Facture> getFactures()
 	{
-		return null;
+		return new ArrayList<>(this.factures);
 	}
 	
 	/**
@@ -62,6 +67,10 @@ public class Client
 	public int sommeMontants()
 	{
 		return 0;
+		for (Facture facture : this.factures) {
+			somme += facture.getMontant();
+		}
+		return somme;
 	}
 
 	/**
@@ -73,7 +82,9 @@ public class Client
 	
 	public Facture createFacture(int montant, boolean reglee)
 	{
-		return null;
+		Facture nouvelleFacture = new Facture(montant, reglee);
+		this.factures.add(nouvelleFacture);
+		return nouvelleFacture;
 	}	
 	
 	/**
@@ -83,7 +94,13 @@ public class Client
 
 	public List<Facture> facturesReglees()
 	{
-		return null;
+		List<Facture> facturesReglees = new ArrayList<>();
+		for (Facture facture : this.factures) {
+			if (facture.isReglee()) {
+				facturesReglees.add(facture);
+			}
+		}
+		return facturesReglees;
 	}
 	
 
@@ -93,7 +110,7 @@ public class Client
 	 */
 	public static List<Client> tous()
 	{
-		return null;
+		return new ArrayList<>(clients);
 	}
 	
 	/**
@@ -102,5 +119,6 @@ public class Client
 	
 	public void delete()
 	{
+		clients.remove(this);
 	}
 }
