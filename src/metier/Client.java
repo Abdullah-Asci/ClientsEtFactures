@@ -64,7 +64,6 @@ public class Client
 	
 	public int sommeMontants()
 	{
-		return 0;
 		for (Facture facture : this.factures) {
 			somme += facture.getMontant();
 		}
@@ -92,7 +91,6 @@ public class Client
 
 	public List<Facture> facturesReglees()
 	{
-		List<Facture> facturesReglees = new ArrayList<>();
 		for (Facture facture : this.factures) {
 			if (facture.isReglee()) {
 				facturesReglees.add(facture);
